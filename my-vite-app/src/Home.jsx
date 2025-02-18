@@ -1,13 +1,41 @@
-import React from "react";
+import { useState } from "react";
+import "./index.css";
 
-const Home = () => {
-    return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <h1>Welcome to My React App</h1>
-            <h2>Name: Pranav Prakash (SQ 70)</h2>
-            <h3>Contact: www.pranavprakash6410@gmail.com</h3>
+export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      {/* Navbar */}
+      <nav>
+        <h1>MyWebsite</h1>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <button className="menu-btn" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? "Close" : "Menu"}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="mobile-menu">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
         </div>
-    );
-};
+      )}
 
-export default Home;
+      {/* Hero Section */}
+      <div className="hero">
+        <h1>Welcome to Pranav's Landing Page</h1>
+        <p>Your journey into creativity starts here.</p>
+        <button>Get Started</button>
+      </div>
+    </div>
+  );
+}
